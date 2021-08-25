@@ -4,11 +4,20 @@ import PropTypes from 'prop-types';
 
 const Formulario = props => {
   const [nombreMascota, setNombreMascota] = useState('');
- 
-  const handlerOnChange = (e) => {
-      console.log(e.target.value);
-      setNombreMascota(e.target.value);
-  }
+  const [nombreDueno, setNombreDueno] = useState('');
+  const [fecha, setFecha] = useState('');
+  const [hora, setHora] = useState('');
+  const [sintomas, setSintomas] = useState('');
+
+  const obtenerDatos = () => {
+    props.agregarTurno();
+    console.log('Nombre mascota:', nombreMascota);
+    console.log('Nombre Dueño:', nombreDueno);
+    console.log('Fecha:', fecha);
+    console.log('Hora:', hora);
+    console.log('Sintomas:', sintomas);
+  };
+
   return (
     <form>
       <label>Nombre Mascota</label>
@@ -18,7 +27,7 @@ const Formulario = props => {
         name="mascota"
         className="u-full-width"
         placeholder="Nombre Mascota"
-        onChange={(e) => handlerOnChange(e)}
+        onChange={e => setNombreMascota(e.target.value)}
       />
       <br />
       <label>Nombre Dueño</label>
@@ -28,22 +37,40 @@ const Formulario = props => {
         name="propietario"
         className="u-full-width"
         placeholder="Nombre dueño de la mascota"
-        value=""
+        onChange={e => setNombreDueno(e.target.value)}
       />
       <br />
       <label>Fecha</label>
       <br />
-      <input type="date" name="fecha" class="u-full-width" value="" />
+      <input
+        type="date"
+        name="fecha"
+        className="u-full-width"
+        onChange={e => setFecha(e.target.value)}
+      />
       <br />
       <label>Hora</label>
       <br />
-      <input type="time" name="hora" class="u-full-width" value="" />
+      <input
+        type="time"
+        name="hora"
+        className="u-full-width"
+        onChange={e => setHora(e.target.value)}
+      />
       <br />
       <label>Sintomas</label>
       <br />
-      <textarea name="sintomas" className="u-full-width" />
+      <textarea
+        name="sintomas"
+        className="u-full-width"
+        onChange={e => setSintomas(e.target.value)}
+      />
       <br />
-      <button type="submit" class="u-full-width button-primary">
+      <button
+        type="button"
+        className="u-full-width button-primary"
+        onClick={obtenerDatos}
+      >
         Agregar Turno
       </button>
     </form>
