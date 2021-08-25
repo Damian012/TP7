@@ -3,6 +3,12 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Formulario = props => {
+  const [nombreMascota, setNombreMascota] = useState('');
+ 
+  const handlerOnChange = (e) => {
+      console.log(e.target.value);
+      setNombreMascota(e.target.value);
+  }
   return (
     <form>
       <label>Nombre Mascota</label>
@@ -12,7 +18,7 @@ const Formulario = props => {
         name="mascota"
         className="u-full-width"
         placeholder="Nombre Mascota"
-        value=""
+        onChange={(e) => handlerOnChange(e)}
       />
       <br />
       <label>Nombre Dueño</label>
