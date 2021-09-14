@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Turno = props => {
   return (
-    <StyledMensaje>
+    <StyledTurno>
       <div className={'caja'}>
-        <p>Mascota: {}</p>
-        <p>Dueño: {}</p>
-        <p>Fecha: {}</p>
-        <p>Hora: {}</p>
-        <p>Sintomas: {}</p>
+        <p>Mascota: {props.datos.nombreMascota}</p>
+        <p>Dueño: {props.datos.nombreDueno}</p>
+        <p>Fecha: {props.datos.fecha}</p>
+        <p>Hora: {props.datos.hora}</p>
+        <p>Sintomas: {props.datos.sintomas}</p>
         <button>Eliminar</button>
       </div>
-    </StyledMensaje>
+    </StyledTurno>
   );
 };
 
-const StyledMensaje = styled.div`
+const StyledTurno = styled.div`
   .caja {
     background-color: #ffffff;
     border: 2px solid #000;

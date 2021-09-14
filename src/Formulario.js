@@ -10,7 +10,8 @@ const Formulario = props => {
   const [sintomas, setSintomas] = useState('');
 
   const obtenerDatos = () => {
-    props.agregarTurno();
+    props.onTurnoAgregado(nombreMascota, nombreDueno, fecha, hora, sintomas);
+
     console.log('Nombre mascota:', nombreMascota);
     console.log('Nombre Dueño:', nombreDueno);
     console.log('Fecha:', fecha);

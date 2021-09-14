@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import Formulario from './Formulario';
 import Turno from './Turno';
 import styled from 'styled-components';
 
+
 export default function App() {
-  const agregarTurno = () => {};
+  const [arrTurnos, setArrTurnos] = useState([]);
+
+  const agregarTurno = (nombreMascota, nombreDueno, fecha, hora, sintomas) => {
+    const datosTurno = {nombreMascota, nombreDueno, fecha, hora, sintomas};
+    const nuevoArray = arrTurnos;
+    nuevoArray.push(datosTurno);
+    setArrTurnos(nuevoArray);
+    console.log('Array de turnos:', arrTurnos);
+  };
   return (
-    <StyledMensaje>
+    <StyledTurno>
       <div className={'fondo'}>
       <div className={'sacarTurno'}>
         <h1 className={'titulo1'}>Administrador de pacientes</h1>
@@ -16,14 +25,16 @@ export default function App() {
         </div>
         <div className={'administraTusTurnos'}>
           <h2 className={'titulo3'}>Administra tus turnos</h2>
-          <Turno />
+          {arrTurnos.length > 0 && arrTurnos.map((turno) => {
+            return <Turno datos={turno}/>
+          })}
         </div>
       </div>
-    </StyledMensaje>
+    </StyledTurno>
   );
 }
 
-const StyledMensaje = styled.div`
+const StyledTurno = styled.div`
 
   .fondo {
     background-color: #e24a94;
